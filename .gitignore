@@ -1,0 +1,21 @@
+# Node.js / React
+node_modules/
+.npm
+npm-debug.log
+build/
+dist/
+.pnp.*
+
+# Java / Maven (Spring Boot)
+target/
+*.jar
+*.war
+.settings/
+.classpath
+.project
+
+# IDE / OS
+.DS_Store
+.idea/
+.vscode/
+*.iml

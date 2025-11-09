@@ -1,0 +1,158 @@
+/* Simple reset and dark mode theme */
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: #282c34;
+  color: white;
+}
+
+/* Main app container */
+.App {
+  text-align: center;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+.App-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+}
+
+.App-header h1 {
+  margin-top: 0;
+}
+
+.prompt-form {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.prompt-textarea {
+  width: 100%;
+  padding: 12px;
+  font-size: 1rem;
+  font-family: monospace;
+  border: 1px solid #61dafb;
+  border-radius: 4px;
+  background-color: #3b3f47;
+  color: white;
+  resize: vertical;
+  box-sizing: border-box;
+}
+
+.generate-button {
+  font-size: 1.2rem;
+  padding: 12px 20px;
+  margin-top: 1rem;
+  background-color: #61dafb;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: bold;
+  color: #282c34;
+}
+
+.generate-button:disabled {
+  background-color: #555;
+  cursor: not-allowed;
+}
+
+.error-message {
+  color: #f54242;
+  font-weight: bold;
+}
+
+/* The Output */
+
+.code-output-area {
+  width: 100%;
+  margin-top: 2rem;
+}
+
+.code-output-area h3 {
+  text-align: left;
+}
+
+.code-block {
+  background-color: #1e1e1e;
+  border: 1px solid #555;
+  border-radius: 4px;
+  padding: 1rem;
+  
+  text-align: left;
+  white-space: pre-wrap;
+  word-break: break-all;
+  font-family: monospace;
+  font-size: 0.9rem;
+}
+
+.tabs-container {
+  display: flex;
+  margin-bottom: -1px;
+}
+
+.tab-button {
+  padding: 10px 15px;
+  font-size: 0.9rem;
+  cursor: pointer;
+  background-color: #3b3f47;
+  color: white;
+  border: 1px solid #555;
+  border-bottom: 1px solid #555;
+  border-top-left-radius: 4px;
+  border-top-right-radius: 4px;
+}
+
+.tab-button.active {
+  background-color: #1e1e1e;
+  border-bottom: 1px solid #1e1e1e;
+  font-weight: bold;
+}
+
+.code-block-wrapper {
+  position: relative;
+  width: 100%;
+}
+
+.code-block {
+  background-color: #1e1e1e;
+  border: 1px solid #555;
+  border-radius: 4px;
+  border-top-left-radius: 0; 
+  padding: 1rem;
+  padding-top: 2rem;
+  text-align: left;
+  white-space: pre-wrap;
+  word-break: break-all;
+  font-family: monospace;
+  font-size: 0.9rem;
+  
+  margin: 0;
+}
+
+.copy-button {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  
+  background-color: #555;
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.8rem;
+}
+
+.copy-button:hover {
+  background-color: #777;
+}
