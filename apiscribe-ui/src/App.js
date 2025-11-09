@@ -182,9 +182,9 @@ function App() {
 
         {/* --- Footer --- */}
         <footer className="text-gray-500 text-sm mt-12 mb-4">
-          Built at [Hackathon Name] by [Your Name].
+          Built at HackCC by Safkat.
           <a
-            href="https://github.com/[your-username]/APIScribe" // CHANGE THIS
+            href="https://github.com/Safkatul-Islam/APIScribe" // CHANGE THIS
             target="_blank"
             rel="noopener noreferrer"
             className="text-blue-400 hover:underline ml-2"
