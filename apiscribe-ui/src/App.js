@@ -28,7 +28,11 @@ function App() {
     setCopyButtonText('Copy');
 
     try {
-      const response = await fetch('http://localhost:8080/api/generate', {
+      const API_HOST = process.env.NODE_ENV === 'production' 
+        ? process.env.REACT_APP_API_URL
+        : 'http://localhost:8080';
+
+      const response = await fetch(`${API_HOST}/api/generate`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ prompt: prompt }), 
