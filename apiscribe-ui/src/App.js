@@ -173,8 +173,8 @@ function App() {
               
               <pre className="bg-gray-800 rounded-b-lg p-4 pt-10 text-left font-mono text-sm overflow-x-auto">
                 {typeof snippets[activeTab] === 'string'
-                  ? snippets[activeTab]
-                  S: JSON.stringify(snippets[activeTab], null, 2)}
+                ? snippets[activeTab]
+                : JSON.stringify(snippets[activeTab], null, 2)}
               </pre>
             </div>
           </div>
