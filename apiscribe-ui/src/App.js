@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
-import { Toaster, toast } from 'react-hot-toast';
+import { Toaster, toast } from 'react-hot-toast'; // We're keeping this!
 
+// Tabs are now defined at the top
 const TABS = [
   { key: 'javascriptFetch', label: 'JavaScript (fetch)' },
   { key: 'javascriptAxios', label: 'JavaScript (axios)' },
@@ -22,6 +23,7 @@ function App() {
     setError('');
 
     try {
+      // Use the environment variable for the API host
       const API_HOST = process.env.NODE_ENV === 'production'
         ? process.env.REACT_APP_API_URL
         : 'http://localhost:8080';
@@ -71,12 +73,13 @@ function App() {
 
   return (
     // Main container
-    <div className="bg-black text-gray-200 min-h-screen p-4 md:p-8 font-sans">
+    <div className="bg-gray-900 text-white min-h-screen p-4 md:p-8">
+      {/* Toast notification setup */}
       <Toaster
         position="top-center"
         toastOptions={{
           style: {
-            background: '#1F2937', // bg-gray-800
+            background: '#333',
             color: '#fff',
           },
         }}
@@ -85,31 +88,31 @@ function App() {
       {/* Centered content area */}
       <header className="container mx-auto max-w-3xl flex flex-col items-center">
         
-        <h1 className="text-4xl md:text-5xl font-bold mt-8 mb-3 text-white">
+        <h1 className="text-4xl md:text-5xl font-bold mt-4 mb-2">
           APIScribe 🚀
         </h1>
-        <p className="text-lg text-gray-400 mb-8 text-center">
+        <p className="text-lg text-gray-400 mb-6 text-center">
           Paste a cURL command or describe your API call in plain English.
         </p>
 
         {/* --- Canned Demos --- */}
-        <div className="flex flex-wrap justify-center items-center gap-3 mb-8">
-          <span className="text-sm text-gray-400">Try these:</span>
+        <div className="flex flex-wrap justify-center items-center gap-2 mb-6">
+          <p className="text-sm text-gray-300 hidden md:block">Try these:</p>
           <button
             onClick={() => setPrompt('a cURL command to POST /api/v1/users with a JSON body of name and email')}
-            className="bg-gray-900 text-gray-300 border border-gray-700 px-3 py-1 rounded-full text-xs hover:bg-gray-800 hover:border-gray-600 transition-colors"
+            className="bg-gray-700 text-blue-400 border border-blue-400 px-3 py-1 rounded-full text-xs hover:bg-blue-400 hover:text-gray-900 transition-colors"
           >
             Demo: cURL
           </button>
           <button
             onClick={() => setPrompt('a python requests function to GET /api/products/123')}
-            className="bg-gray-900 text-gray-300 border border-gray-700 px-3 py-1 rounded-full text-xs hover:bg-gray-800 hover:border-gray-600 transition-colors"
+            className="bg-gray-700 text-green-400 border border-green-400 px-3 py-1 rounded-full text-xs hover:bg-green-400 hover:text-gray-900 transition-colors"
           >
             Demo: Python
           </button>
           <button
             onClick={() => setPrompt('a java spring WebClient to PUT /api/items/456')}
-            className="bg-gray-900 text-gray-300 border border-gray-700 px-3 py-1 rounded-full text-xs hover:bg-gray-800 hover:border-gray-600 transition-colors"
+            className="bg-gray-700 text-yellow-400 border border-yellow-400 px-3 py-1 rounded-full text-xs hover:bg-yellow-400 hover:text-gray-900 transition-colors"
           >
             Demo: Java
           </button>
@@ -118,7 +121,7 @@ function App() {
         {/* --- Form --- */}
         <form className="w-full flex flex-col gap-4" onSubmit={handleSubmit}>
           <textarea
-            className="w-full bg-gray-950 border border-gray-800 rounded-lg p-4 text-gray-200 font-mono resize-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition-all"
+            className="w-full bg-gray-800 border border-gray-600 rounded-lg p-4 text-gray-100 font-mono resize-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition-colors"
             value={prompt}
             onChange={(e) => setPrompt(e.target.value)}
             placeholder="e.g., 'A javascript fetch request to POST /api/users...'"
@@ -126,7 +129,7 @@ function App() {
           />
           <button
             type="submit"
-            className="w-full bg-blue-600 text-white font-bold py-3 px-4 rounded-lg hover:bg-blue-700 disabled:bg-gray-700 disabled:cursor-not-allowed flex justify-center items-center h-12 transition-colors"
+            className="w-full bg-blue-600 text-white font-bold py-3 px-4 rounded-lg hover:bg-blue-700 disabled:bg-gray-500 disabled:cursor-not-allowed flex justify-center items-center h-12 transition-colors"
             disabled={isLoading}
           >
             {isLoading ? (
@@ -141,16 +144,16 @@ function App() {
         {error && <p className="text-red-500 font-bold mt-4">{error}</p>}
 
         {snippets && (
-          <div className="w-full mt-10">
+          <div className="w-full mt-8">
             {/* --- Tabs --- */}
-            <div className="flex border-b border-gray-800">
+            <div className="flex border-b border-gray-700">
               {TABS.map((tab) => (
                 <button
                   key={tab.key}
                   className={`py-2 px-4 font-medium -mb-px
                     ${activeTab === tab.key
-                      ? 'text-white border-b-2 border-blue-500'
-                      : 'text-gray-500 hover:text-gray-300'
+                      ? 'bg-gray-800 text-white rounded-t-lg border-x border-t border-gray-700'
+                      : 'text-gray-400 hover:text-white'
                     }`}
                   onClick={() => setActiveTab(tab.key)}
                 >
@@ -163,28 +166,28 @@ function App() {
             <div className="relative w-full">
               <button
                 onClick={handleCopy}
-                className="absolute top-3 right-3 bg-gray-700 px-3 py-1 rounded text-xs text-gray-200 hover:bg-gray-600 transition-colors"
+                className="absolute top-3 right-3 bg-gray-600 px-3 py-1 rounded text-xs text-gray-200 hover:bg-gray-500 transition-colors"
               >
                 Copy
               </button>
               
-              <pre className="bg-gray-950 rounded-b-lg border border-gray-800 border-t-0 p-4 pt-10 text-left font-mono text-sm overflow-x-auto">
+              <pre className="bg-gray-800 rounded-b-lg p-4 pt-10 text-left font-mono text-sm overflow-x-auto">
                 {typeof snippets[activeTab] === 'string'
-                  ? snippets[activeTab]
-                  : JSON.stringify(snippets[activeTab], null, 2)}
+                ? snippets[activeTab]
+                : JSON.stringify(snippets[activeTab], null, 2)}
               </pre>
             </div>
           </div>
         )}
 
         {/* --- Footer --- */}
-        <footer className="text-gray-600 text-sm mt-16 mb-4">
-          Built at HackCC by Safkat.
+        <footer className="text-gray-500 text-sm mt-12 mb-4">
+          Built at [Hackathon Name] by [Your Name].
           <a
-            href="https://github.com/Safkatul-Islam/APIScribe" // CHANGE THIS
+            href="https://github.com/[your-username]/APIScribe" // CHANGE THIS
             target="_blank"
             rel="noopener noreferrer"
-            className="text-gray-500 hover:text-blue-400 hover:underline ml-2 transition-colors"
+            className="text-blue-400 hover:underline ml-2"
           >
             View on GitHub
           </a>
